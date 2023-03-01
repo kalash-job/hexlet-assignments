@@ -1,0 +1,41 @@
+- content_for :title do
+  / page title (h2)
+  / BEGIN
+  h2 = t('.posts')
+  / END
+
+table.table.table-striped.table-hover.mb-5
+  thead
+    tr
+      th{ scope = 'col' } #
+      th{ scope = 'col' }
+        / table title
+        / BEGIN
+        = t('.all_posts')
+        / END
+      th
+      th
+
+  tbody
+    - @posts.each_with_index do |post, i|
+      tr
+        th{ scope = 'row' } = i + 1
+        td = post.title
+        td
+          / comments count
+          / BEGIN
+          = t('.comments_count', count: post.comments.count)
+          / END
+        td.d-flex
+          / posts links
+          / BEGIN
+          .me-4 = link_to t('.show'), post
+          .me-4 = link_to t('.edit'), edit_post_path(post)
+          = link_to t('.destroy'), post, data: { confirm: t('.confirm') }, method: :delete
+          / END
+
+/ new post link
+= link_to new_post_path, id: 'new-post-link', class: 'btn btn-primary' do
+  / BEGIN
+  = t('.create')
+  / END

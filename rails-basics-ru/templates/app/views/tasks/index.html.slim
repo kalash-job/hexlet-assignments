@@ -1,0 +1,11 @@
+h1 Page with all tasks
+br
+= link_to 'Add new task', new_task_path
+ul
+  - @tasks.each do |task|
+    li == "Task: #{link_to task.name, task_path(task)}"
+    br
+    li = "Creator: #{task.creator}"
+    br
+    li = "Performer: #{task.performer}"
+    hr

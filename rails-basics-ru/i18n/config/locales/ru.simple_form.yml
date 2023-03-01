@@ -1,0 +1,68 @@
+---
+ru:
+  simple_form:
+    "yes": 'ДА'
+    "no": 'Нет'
+    required:
+      text: 'обязательное'
+      mark: '*'
+      html: ''
+    error_notification:
+      default_message: "Пожалуйста, исправьте ошибки:"
+    hints:
+      defaults:
+        new:
+          body: Содержимое
+          title: Title
+        body: Содержимое
+        title: Title
+      post:
+        edit:
+          body: Содержимое
+          title: Название
+        new:
+          body: Содержимое
+          title: Название
+        body: Содержимое
+        title: Название
+      post_comment:
+        body: Текст комментария
+        edit:
+          body: Текст комментария
+        show:
+          body: Текст комментария
+    labels:
+      defaults:
+        new:
+          title: Название
+        title: Название
+      post:
+        edit:
+          body: Содержимое
+          title: Название
+        new:
+          body: Содержимое
+          title: Название
+        body: Содержимое
+        title: Название
+      post_comment:
+        edit:
+          body: Текст комментария
+    placeholders:
+      # BEGIN
+      post:
+        edit:
+          body: Текст поста
+          title: Название
+        body: Текст поста
+        new:
+          body: Текст поста
+          title: Название
+        title: Название
+      # END
+      post_comment:
+        edit:
+          body: Текст комментария
+        show:
+          body: Текст комментария
+        body: Текст

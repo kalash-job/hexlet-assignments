@@ -1,0 +1,13 @@
+h1 = @post.title
+br
+div
+  = link_to 'Edit post', edit_post_path(@post), class: "btn btn-outline-dark"
+  = link_to 'Delete post', post_path(@post), method: :delete, class: "btn btn-outline-dark"
+br
+div
+  span Status:
+  span = @post.published ? ' Published' : ' Unpublished'
+br
+div = @post.summary
+br
+div = @post.body

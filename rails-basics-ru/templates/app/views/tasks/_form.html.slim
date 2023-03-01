@@ -1,0 +1,35 @@
+= form_with model: task do |form|
+  div
+    = form.label :name
+    br
+    = form.text_field :name
+  div
+    = form.label :creator
+    br
+    = form.text_field :creator
+  div
+    = form.label :performer
+    br
+    = form.text_field :performer
+  div
+    = form.label :status
+    br
+    = form.text_field :status
+  div
+    = form.label :description
+    br
+    = form.text_area :description
+  div
+    p Is task completed?
+    = form.radio_button :completed, true
+    = form.label :completed, "Task is completed"
+    = form.radio_button :completed, false
+    = form.label :completed, "Task is not completed"
+  br
+  - if task.errors.any?
+    div id="error_explanation"
+      h2 == "#{pluralize(task.errors.count, "error")} prohibited this task from being saved:"
+      ul
+        - task.errors.each do |error|
+          li = error.full_message
+  div = form.submit

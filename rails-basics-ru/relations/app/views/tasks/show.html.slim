@@ -1,0 +1,15 @@
+= content_for :title do
+  = @task.name
+
+hr
+div = "Status: #{@task.status.name}"
+br
+div = "User: #{@task.user.name}"
+br
+div = "Description: #{@task.description}"
+hr
+
+.d-flex
+  = link_to 'Edit', edit_task_path(@task), class: 'btn btn-outline-primary me-2'
+  = link_to 'Delete task', task_path(@task), method: :delete, class: "btn btn-outline-primary me-2"
+  = link_to 'Back', :back, class: 'btn btn-outline-primary'

@@ -1,0 +1,23 @@
+- content_for :title do
+  = @post.title
+p
+  strong.me-2 Body:
+  = @post.body
+/ BEGIN
+h4 Comments
+== render 'web/posts/comments/form', comment: @comment, url: post_comments_path(@post)
+hr
+- @comments.each do |comment|
+  - next if comment.id.nil?
+  = comment.body
+  br
+  = link_to 'Edit', edit_post_comment_path(comment.post, comment), class: 'link-primary'
+  '
+  = link_to 'Destroy', post_comment_path(comment.post, comment), data: { confirm: 'Are you sure?' }, method: :delete, class: 'link-danger'
+  br
+/ END
+hr
+
+.d-flex
+  = link_to 'Edit', edit_post_path(@post), class: 'btn btn-outline-primary mr-2'
+  = link_to 'Back', :back, class: 'btn btn-outline-primary'

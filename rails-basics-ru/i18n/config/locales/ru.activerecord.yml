@@ -1,0 +1,25 @@
+ru:
+  activerecord:
+    models:
+      # BEGIN
+      post: Пост
+      # END
+      post/comment: Комментарий
+
+    attributes:
+      post:
+        # BEGIN
+        body: Содержимое
+        title: Название
+        # END
+      post/comment:
+        body: Текст комментария
+
+    errors:
+      models:
+        post:
+          attributes:
+            # BEGIN
+            body: Содержимое
+            title: Название
+            # END

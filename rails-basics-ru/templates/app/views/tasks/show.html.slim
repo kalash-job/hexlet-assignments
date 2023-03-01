@@ -1,0 +1,27 @@
+h1 == "Page of task #{@task.name}"
+br
+= link_to 'Edit task', edit_task_path(@task)
+br
+= link_to 'Delete task', task_path(@task), method: :delete
+table
+  tr
+    td Task's name
+    td = @task.name
+  tr
+    td Task's creator
+    td = @task.creator
+  tr
+    td Task's performer
+    td = @task.performer
+  tr
+    td Task's status
+    td = @task.status
+  tr
+    td Task's description
+    td = @task.description
+  tr
+    td Task's creation
+    td = @task.created_at.strftime("%H:%M %d.%m.%Y")
+  tr
+    td Сompleteness
+    td = @task.completed ? 'completed' : 'not completed'

@@ -1,0 +1,11 @@
+h1 All posts
+br
+= link_to 'Add new post', new_post_path, class: "btn btn-outline-dark"
+br
+br
+ul
+  - @posts.each do |post|
+    li == "Post: #{link_to post.title, post_path(post)}"
+    br
+    li = "Summary: #{post.summary}"
+    hr

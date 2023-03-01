@@ -1,0 +1,38 @@
+# == Schema Information
+#
+# Table name: tasks
+#
+#  id          :integer          not null, primary key
+#  completed   :boolean
+#  creator     :string
+#  description :text
+#  name        :string
+#  performer   :string
+#  status      :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+one:
+  name: First task
+  description: Description of the first task
+  status: New
+  creator: First creator
+  performer: First performer
+  completed: false
+
+two:
+  name: Second task
+  description: Description of the second task
+  status: Closed
+  creator: Second creator
+  performer: Second performer
+  completed: true
+
+three:
+  name: Third task
+  description: Description of the third task
+  status: Closed
+  creator: Third creator
+  performer: Third performer
+  completed: true

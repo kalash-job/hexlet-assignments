@@ -1,0 +1,13 @@
+<h1>Page of task "<%= @task.name %>"</h1>
+<br>
+<%= link_to 'Edit task', edit_task_path(@task) %>
+<%= link_to 'Delete task', task_path(@task), method: :delete %>
+<table>
+  <tr><td>Task's name</td><td><%= @task.name %></td></tr>
+  <tr><td>Task's creator</td><td><%= @task.creator %></td></tr>
+  <tr><td>Task's performer</td><td><%= @task.performer %></td></tr>
+  <tr><td>Task's status</td><td><%= @task.status %></td></tr>
+  <tr><td>Task's description</td><td><%= @task.description %></td></tr>
+  <tr><td>Task's creation date</td><td><%= @task.created_at.strftime("%H:%M %d.%m.%Y") %></td></tr>
+  <tr><td>Сompleteness</td><td><%= @task.completed ? 'completed' : 'not completed' %></td></tr>
+</table>

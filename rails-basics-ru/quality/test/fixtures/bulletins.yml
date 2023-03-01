@@ -1,0 +1,14 @@
+first_bulletin:
+  title: First
+  body: Body of the first bulletin
+  published: true
+
+second_bulletin:
+  title: Second
+  body: Body of the second bulletin
+  published: true
+
+third_bulletin:
+  title: Third
+  body: Body of the third bulletin
+  published: false

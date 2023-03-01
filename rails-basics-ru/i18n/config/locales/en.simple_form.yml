@@ -1,0 +1,68 @@
+en:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+      html: ''
+    error_notification:
+      default_message: "Please check the problems:"
+    hints:
+      defaults:
+        body: Content
+        new:
+          body: Content
+          title: Title
+        title: Title
+      post:
+        edit:
+          body: Content
+          title: Title
+        new:
+          body: Content
+          title: Title
+        body: Content
+        title: Title
+      post_comment:
+        body: Text of comment
+        edit:
+          body: Text of comment
+        show:
+          body: Text of comment
+    labels:
+      defaults:
+        new:
+          title: Title
+        title: Title
+      post:
+        edit:
+          body: Content
+          title: Title
+        new:
+          body: Content
+          title: Title
+        body: Content
+        title: Title
+      post_comment:
+        edit:
+          body: Text of comment
+
+    placeholders:
+      # BEGIN
+      post:
+        body: Text of post
+        edit:
+          body: Text of post
+          title: Title
+        new:
+          body: Text of post
+          title: Enter post title
+        title: Title
+      # END
+      post_comment:
+        edit:
+          body: Text of comment
+        show:
+          body: Text of comment
+        body: Enter comment body
