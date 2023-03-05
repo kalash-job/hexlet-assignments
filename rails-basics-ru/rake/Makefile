@@ -1,3 +1,7 @@
+lint:
+	bundle exec rubocop
+lint-fix:
+	bundle exec rubocop -A
 setup:
 	bin/setup
 	bin/rails db:seed
