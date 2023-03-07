@@ -14,21 +14,26 @@ class Hacker
       sign_up_page = Nokogiri::HTML(sign_up_response.body)
       authenticity_token = sign_up_page.css('input[name=authenticity_token]').first.to_h.fetch('value')
 
-      Net::HTTP.post(
-        URI.parse(user_create_url),
-        URI.encode_www_form(
-          'authenticity_token' => authenticity_token,
-          'user[email]' => email,
-          'user[password]' => password,
-          'user[password_confirmation]' => password,
-          'commit' => 'Регистрация'
-        ),
-        {
-          'Cookie' => cookies,
-          'User-Agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/110.0',
-          'Content-Type' => 'application/x-www-form-urlencoded'
-        }
+      headers = {
+        'Cookie' => cookies,
+        'User-Agent' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/110.0',
+        'Content-Type' => 'application/x-www-form-urlencoded'
+      }
+      params = URI.encode_www_form(
+        'authenticity_token' => authenticity_token,
+        'user[email]' => email,
+        'user[password]' => password,
+        'user[password_confirmation]' => password,
+        'commit' => 'Регистрация'
       )
+
+      response = Net::HTTP.post(
+        URI.parse(user_create_url),
+        params,
+        headers
+      )
+
+      response.code == '302'
     end
     # END
   end
