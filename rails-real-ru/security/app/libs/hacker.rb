@@ -8,9 +8,10 @@ class Hacker
       # BEGIN
       sign_up_url = 'https://rails-collective-blog-ru.hexlet.app/users/sign_up'
       user_create_url = 'https://rails-collective-blog-ru.hexlet.app/users'
-      sign_up_response = URI.open(sign_up_url)
-      cookies = sign_up_response.meta['set-cookie']
-      sign_up_page = Nokogiri::HTML(sign_up_response)
+
+      sign_up_response = Net::HTTP.get_response(URI.parse(sign_up_url))
+      cookies = sign_up_response['set-cookie']
+      sign_up_page = Nokogiri::HTML(sign_up_response.body)
       authenticity_token = sign_up_page.css('input[name=authenticity_token]').first.to_h.fetch('value')
 
       Net::HTTP.post(
