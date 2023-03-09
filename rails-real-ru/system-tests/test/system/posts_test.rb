@@ -4,10 +4,6 @@ require 'application_system_test_case'
 
 # BEGIN
 class PostsTest < ApplicationSystemTestCase
-  def setup
-    Rails.application.load_seed
-  end
-
   test 'visiting the index' do
     visit posts_url
 
@@ -18,24 +14,36 @@ class PostsTest < ApplicationSystemTestCase
     visit posts_url
     click_on 'New Post'
 
-    fill_in('Title', with: Faker::Lorem.sentence)
-    fill_in('Body', with: Faker::Lorem.paragraph_by_chars(number: 180))
+    post_params = {
+      title: Faker::Lorem.sentence,
+      body: Faker::Lorem.paragraph_by_chars(number: 180)
+    }
+    fill_in('Title', with: post_params[:title])
+    fill_in('Body', with: post_params[:body])
 
     click_on 'Create Post'
 
     assert_text 'Post was successfully created.'
+    assert_text post_params[:title]
+    assert_text post_params[:body]
   end
 
   test 'updating a Post' do
     visit posts_url
     click_on 'Edit', match: :first
 
-    fill_in('Title', with: Faker::Lorem.sentence)
-    fill_in('Body', with: Faker::Lorem.paragraph_by_chars(number: 180))
+    post_params = {
+      title: Faker::Lorem.sentence,
+      body: Faker::Lorem.paragraph_by_chars(number: 190)
+    }
+    fill_in('Title', with: post_params[:title])
+    fill_in('Body', with: post_params[:body])
 
     click_on 'Update Post'
 
     assert_text 'Post was successfully updated.'
+    assert_text post_params[:title]
+    assert_text post_params[:body]
   end
 
   test 'destroying a Post' do
