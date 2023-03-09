@@ -21,12 +21,34 @@ class VacanciesController < ApplicationController
   end
 
   # BEGIN
-  
+  def publish
+    @vacancy = vacancy
+    if @vacancy.may_publish?
+      @vacancy.publish!
+      redirect_to vacancies_path, notice: 'Vacancy was successfully published.'
+    else
+      redirect_to vacancies_path, notice: 'Vacancy was not published.'
+    end
+  end
+
+  def archive
+    @vacancy = vacancy
+    if @vacancy.may_archive?
+      @vacancy.archive!
+      redirect_to vacancies_path, notice: 'Vacancy was successfully archived.'
+    else
+      redirect_to vacancies_path, notice: 'Vacancy was not archived.'
+    end
+  end
   # END
 
   private
 
   def vacancy_params
     params.require(:vacancy).permit(:title, :description)
+  end
+
+  def vacancy
+    Vacancy.find(params[:id])
   end
 end
