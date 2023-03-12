@@ -3,7 +3,7 @@
     .col-5
       = f.input :title_cont, label: false, placeholder: 'By post title'
     .col-4
-      = f.input :aasm_state_eq, as: :select, collection: post_states, label: false, prompt: 'Select post state'
+      = f.input :aasm_state_eq, as: :select, collection: post_states, label: false, include_blank: 'Select post state'
     .col-3
       = f.submit 'Search', class: 'btn btn-primary me-2'
       = link_to 'Reset', url_for, class: 'btn btn-outline-primary'
