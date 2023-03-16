@@ -2,16 +2,6 @@
 
 class PostPolicy < ApplicationPolicy
   # BEGIN
-  attr_reader :user, :record
-
-  def index?
-    true
-  end
-
-  def show?
-    true
-  end
-
   def create?
     user
   end
@@ -21,7 +11,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def update?
-    user&.admin? || user&.id == record.author.id
+    admin? || user&.id == record.author.id
   end
 
   def edit?
@@ -29,6 +19,12 @@ class PostPolicy < ApplicationPolicy
   end
 
   def destroy?
+    admin?
+  end
+
+  private
+
+  def admin?
     user&.admin?
   end
   # END

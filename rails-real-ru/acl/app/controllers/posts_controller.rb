@@ -27,7 +27,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      redirect_to @post, notice: 'Post was successfully created.'
+      redirect_to @post, notice: t('.success')
     else
       render :new, status: :unprocessable_entity
     end
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
     authorize @post
 
     if @post.update(post_params)
-      redirect_to @post, notice: 'Post was successfully updated.'
+      redirect_to @post, notice: t('.success')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -50,12 +50,11 @@ class PostsController < ApplicationController
 
     @post.destroy
 
-    redirect_to posts_url, notice: 'Post was successfully destroyed.'
+    redirect_to posts_url, notice: t('.success')
   end
 
   private
 
-  # Only allow a list of trusted parameters through.
   def post_params
     params.require(:post).permit(:title, :body)
   end
