@@ -6,16 +6,8 @@ class PostPolicy < ApplicationPolicy
     user
   end
 
-  def new?
-    create?
-  end
-
   def update?
     admin? || user&.id == record.author.id
-  end
-
-  def edit?
-    update?
   end
 
   def destroy?
