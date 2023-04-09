@@ -2,6 +2,16 @@
 ru:
   web:
     movies:
+      comments:
+        create:
+          failure: Комментарий не создан
+          success: Комментарий создан
+        destroy:
+          failure: Комментарий не удален
+          success: Комментарий удален
+        update:
+          failure: Комментарий не обновлен
+          success: Комментарий обновлен
       destroy:
         fail: Ошибка
         success: Успешно

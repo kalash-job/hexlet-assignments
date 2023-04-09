@@ -2,6 +2,16 @@
 en:
   web:
     movies:
+      comments:
+        create:
+          failure: Comment was not created
+          success: Comment was created
+        destroy:
+          failure: Comment was not deleted
+          success: Comment was deleted
+        update:
+          failure: Comment was not updated
+          success: Comment was updated
       destroy:
         fail: Fail
         success: Success
@@ -13,6 +23,16 @@ en:
         title: Title
       new:
         new_movie: New movie
+      reviews:
+        create:
+          failure: Review was not created
+          success: Review was created
+        destroy:
+          failure: Review was not deleted
+          success: Review was deleted
+        update:
+          failure: Review was not updated
+          success: Review was updated
       show:
         description: Description
         go_to_comments: Show movie comments

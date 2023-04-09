@@ -6,7 +6,10 @@ Rails.application.routes.draw do
 
     resources :movies do
       # BEGIN
-      
+      scope module: :movies do
+        resources :comments, only: %i[index new create edit update destroy]
+        resources :reviews, only: %i[index new create edit update destroy]
+      end
       # END
     end
 
