@@ -62,17 +62,11 @@ class Web::UsersController < Web::ApplicationController
 
   # BEGIN
   def stream_csv
-    respond_to do |format|
-      format.csv do
-        response.headers['Last-Modified'] = Time.now.httpdate
-        response.headers['Content-Disposition'] = 'attachment; filename="stream_csv.csv"'
-        response.headers['Content-Type'] ||= 'text/csv'
-        csv = generate_csv(User.column_names, User.all)
-        send_stream(filename: 'stream_csv.csv') do |stream|
-          csv.each_line do |line|
-            stream.write line
-          end
-        end
+    response.headers['Last-Modified'] = Time.now.httpdate
+    csv = generate_csv(User.column_names, User.all)
+    send_stream(filename: 'stream_csv.csv') do |stream|
+      csv.each_line do |line|
+        stream.write line
       end
     end
   end
