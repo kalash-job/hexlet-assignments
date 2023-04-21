@@ -20,18 +20,18 @@ class Web::RepositoriesController < Web::ApplicationController
   def create
     # BEGIN
     @repository = Repository.new(permitted_params)
-    repository_info = GetRepositoryInfoService.new(@repository.link).call
-    @repository.owner_name = repository_info.owner.login
-    @repository.repo_name = repository_info.name
-    @repository.description = repository_info.description
-    @repository.default_branch = repository_info.default_branch
-    @repository.watchers_count = repository_info.watchers_count
-    @repository.language = repository_info.language
-    @repository.repo_created_at = repository_info.created_at
-    @repository.repo_updated_at = repository_info.updated_at
-
     if @repository.save
-      redirect_to repositories_path, notice: t('success')
+      repository_info = GetRepositoryInfoService.new(@repository.link).call
+      @repository.owner_name = repository_info.owner.login
+      @repository.repo_name = repository_info.name
+      @repository.description = repository_info.description
+      @repository.default_branch = repository_info.default_branch
+      @repository.watchers_count = repository_info.watchers_count
+      @repository.language = repository_info.language
+      @repository.repo_created_at = repository_info.created_at
+      @repository.repo_updated_at = repository_info.updated_at
+      @repository.save!
+      redirect_to repository_path(@repository), notice: t('success')
     else
       flash[:notice] = t('fail')
       render :new, status: :unprocessable_entity

@@ -6,8 +6,8 @@ one:
   default_branch: MyString
   watchers_count: 1
   language: MyString
-  repo_created_at: MyString
-  repo_updated_at: MyString
+  repo_created_at: <%= 5.days.ago.to_fs(:db) %>
+  repo_updated_at: <%= 1.days.ago.to_fs(:db) %>
 
 two:
   link: MyString
@@ -15,5 +15,5 @@ two:
   default_branch: MyString
   watchers_count: 1
   language: MyString
-  repo_created_at: MyString
-  repo_updated_at: MyString
+  repo_created_at: <%= 5.days.ago.to_fs(:db) %>
+  repo_updated_at: <%= 2.days.ago.to_fs(:db) %>
