@@ -13,3 +13,5 @@ tmp/
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+.env
+.byebug_history
