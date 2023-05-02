@@ -63,10 +63,10 @@ class Web::UsersController < Web::ApplicationController
   # BEGIN
   def stream_csv
     response.headers['Last-Modified'] = Time.now.httpdate
-    csv = generate_csv(User.column_names, User.all)
     send_stream(filename: 'stream_csv.csv') do |stream|
-      csv.each_line do |line|
-        stream.write line
+      stream.write "id,name,email,created_at,updated_at\n"
+      User.find_each do |user|
+        stream.write "#{user.id},#{user.name},#{user.email},#{user.created_at},#{user.updated_at}\n"
       end
     end
   end
